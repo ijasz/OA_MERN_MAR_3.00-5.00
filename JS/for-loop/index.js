@@ -32,3 +32,17 @@
 //     console.log(i, j);
 //   }
 // }
+
+// const obj = {
+//   f: "ocean",
+//   l: "academy",
+//   age: 10,
+// };
+
+// for (let key in obj) console.log(key, obj[key]);
+
+// const arr = [1, 2, 3, 434, 54, 6]; x
+
+// for (const i of arr) console.log(i);
+
+// for (let i = 0; i <= arr.length - 1; i++) console.log(arr[i]);
