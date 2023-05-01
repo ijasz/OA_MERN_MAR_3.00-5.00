@@ -8,14 +8,20 @@
   </head>
   <body>
     <script>
-      let n = 4,
-        s = 0;
+      let n = 4;
 
-      for (let i = 1; i <= n; i++) {
-        s += i;
+      function sumSeries(n) {
+        let s = 0;
+
+        for (let i = 1; i <= n; i++) {
+          s += i;
+        }
+
+        return s;
       }
 
-      console.log(s, "output");
+      console.log(sumSeries(n));
+      console.log(sumSeries(5));
     </script>
   </body>
 </html>
