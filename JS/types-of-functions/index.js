@@ -53,3 +53,17 @@
 // }
 
 // sayHello(greet);
+
+function sum(...arr) {
+  let output = 0;
+  for (const i of arr) {
+    output += i;
+  }
+  return output;
+}
+
+console.log(sum(2, 456, 4));
+
+console.log(sum(2, 2, 5, 7));
+
+console.log(sum(2, 2));
