@@ -37,15 +37,27 @@
 // IIFE
 
 // (() => {
-//   console.log("IIFE");
+//   console.log("IIFE => arrow function");
 // })();
+
+// (function () {
+//   console.log("IIFE => anonymous function");
+// })();
+
+// (function name() {
+//   console.log("IIFE => anonymous function");
+// })();
+
+(function name(a) {
+  console.log(`IIFE => ${a}`);
+})("anonymous function");
 
 // First Class Function ?
 
 // Higher Order Function
 
 // function greet(name) {
-//   console.log(name + " " + "hello");
+//   console.log("hello" + " " + name);
 // }
 
 // function sayHello(c) {
@@ -54,16 +66,16 @@
 
 // sayHello(greet);
 
-function sum(...arr) {
-  let output = 0;
-  for (const i of arr) {
-    output += i;
-  }
-  return output;
-}
+// function sum(...arr) {
+//   let output = 0;
+//   for (const i of arr) {
+//     output += i;
+//   }
+//   return output;
+// }
 
-console.log(sum(2, 456, 4));
+// console.log(sum(2, 456, 4));
 
-console.log(sum(2, 2, 5, 7));
+// console.log(sum(2, 2, 5, 7));
 
-console.log(sum(2, 2));
+// console.log(sum(2, 2));
