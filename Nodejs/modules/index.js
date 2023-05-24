@@ -1,3 +1,3 @@
-import array from "./main.js";
+const { sum } = require("./sum");
 
-console.log(array);
+console.log(sum(2, 456, 5));
