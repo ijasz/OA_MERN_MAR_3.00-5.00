@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require("uuid");
 const app = express();
 const PORT = 5000;
 const data = require("./data");
-const students = data;
+let students = data;
 
 // middleware
 app.use(express.json());
@@ -46,7 +46,7 @@ app.get("/:id", (req, res) => {
   const { id } = req.params;
   const len = students.length;
   for (let i = 0; i < len; i++) {
-    if (students[i].id === Number(id)) {
+    if (students[i].id === id) {
       return res.send(students[i]);
     }
   }
@@ -59,11 +59,44 @@ app.patch("/:id", (req, res) => {
   const len = students.length;
 
   for (let i = 0; i < len; i++) {
-    if (students[i].id === Number(id)) {
+    if (students[i].id === id) {
       students[i] = { ...students[i], ...updateData };
       return res.status(200).send("updated successfully");
     }
   }
+
+  res.status(404).send("id is not found");
+});
+
+app.put("/", (req, res) => {
+  const { courseName } = req.query;
+  const updateData = req.body;
+  const len = students.length;
+  let flag = false;
+  for (let i = 0; i < len; i++) {
+    if (students[i].courseName === courseName) {
+      students[i] = { ...students[i], ...updateData };
+      flag = true;
+    }
+  }
+
+  if (flag) return res.status(200).send("updated successfully");
+
+  res.status(404).send("course name is not found");
+});
+
+app.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  let flag = false;
+
+  const finalDate = students.filter((i) => {
+    if (i.id !== id) return i;
+    flag = true;
+  });
+
+  students = finalDate;
+
+  if (flag) return res.status(200).send("deleted successfully");
 
   res.status(404).send("id is not found");
 });
