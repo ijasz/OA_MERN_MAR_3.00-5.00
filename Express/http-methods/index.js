@@ -101,6 +101,31 @@ app.delete("/:id", (req, res) => {
   res.status(404).send("id is not found");
 });
 
+app.delete("/", (req, res) => {
+  const data = req.query;
+
+  const keys = Object.keys(data);
+  const values = Object.values(data);
+
+  const finalData = students.filter((obj) => {
+    let flag = false;
+    for (const key in obj) {
+      if (keys.includes(key) && values.includes(obj[key])) flag = true;
+    }
+
+    return !flag ? obj : undefined;
+  });
+
+  // console.log(flag);
+
+  // students = finalDate;
+
+  // if (flag) return res.status(200).send("deleted successfully");
+
+  // res.status(404).send("id is not found");
+  res.status(200).send(finalData);
+});
+
 app.listen(PORT, () => {
   console.log(`server is running at ${PORT}`);
 });
