@@ -93,7 +93,7 @@ app.delete("/:id", (req, res) => {
     if (i.id !== id) return i;
     flag = true;
   });
-
+q
   students = finalDate;
 
   if (flag) return res.status(200).send("deleted successfully");
