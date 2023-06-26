@@ -25,3 +25,16 @@ exports.getAll = async (req, res) => {
       .json({ error: "An error occurred while retrieving mentors." });
   }
 };
+
+exports.updateOneByID = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const query = req.body;
+    const mentors = await mentorModel.findByIdAndUpdate(id, query);
+    res.status(200).json(mentors);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "An error occurred while retrieving mentors." });
+  }
+};
